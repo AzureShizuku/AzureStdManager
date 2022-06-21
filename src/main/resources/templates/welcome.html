@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎</title>
+    
+    <link rel="stylesheet" href="css\index.css" />
+
+	<link rel="stylesheet" href="css/swiper-bundle.min.css">
+
+	<link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/news.css">
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/css/layuimini.css?v=2.0.4.2}" media="all">
+    <link rel="stylesheet" th:href="@{/css/themes/default.css}" media="all">
+    <link rel="stylesheet" th:href="@{/lib/font-awesome-4.7.0/css/font-awesome.min.css}" media="all">
+    <style>
+        .icp{
+            font-size: 18px;
+            height: 200px;
+            text-align: center;
+            margin-top: 100px;
+        }
+        .we{
+            font-size: 40px;
+            text-align: center;
+            margin-top: 50px
+        }
+        
+    </style>
+</head>
+<body>
+
+<div class="we">
+    学生信息综合管理系统公告栏
+</div>
+
+    <div class="content-wrap">
+        <div class="news_index content-body" style="background-position-y: 0px;">
+
+            <img src="img/newsbg.jpg">
+            <img src="img/news背景.jpg" class="newsbj">
+            <div class="body">
+
+                <ul class="recommend">
+                    <li class="recommend__item" title="点击进入学生管理系统">
+                        <a class="news__title ellipsis">
+                            <div class="recommend__imgwrap">
+                                <img class="recommend__img coverFit" src="img/img1.png">
+                            </div>
+                            <div class="recommend__title">大事件！学生管理系统上线</div>
+                            
+                            <p class="recommend__summary"></p>
+                        </a>
+                        <div class="recommend__meta">
+                            <span class="recommend__date">2022/6</span>
+                            <span class="recommend__category news__cate-2">公告</span>
+                        </div>
+                    </li>
+                    <li class="recommend__item" title="点击进入老师管理系统">
+                        <a class="news__title ellipsis">
+                            <div class="recommend__imgwrap">
+                                <img class="recommend__img coverFit" src="img/img2.png">
+                            </div>
+                            <div class="recommend__title">震惊！教师管理系统上线</div>
+                            <p class="recommend__summary"></p>
+                        </a>
+                        <div class="recommend__meta">
+                            <span class="recommend__date">2022/6</span>
+                            <span class="recommend__category news__cate-2">公告</span>
+                        </div>
+                    </li>
+                    <li class="recommend__item" title="点击进入选课系统">
+                        <a class="news__title ellipsis">
+                            <div class="recommend__imgwrap">
+                                <img class="recommend__img coverFit" src="img/img3.png">
+                            </div>
+                            <div class="recommend__title">「学生选课系统」正式上线！</div>
+                            <p class="recommend__summary"></p>
+                        </a>
+                        <div class="recommend__meta">
+                            <span class="recommend__date">2022/6</span>
+                            <span class="recommend__category news__cate-2">公告</span>
+                        </div>
+                    </li>
+                </ul>
+               <ul class="category">
+                   <li class="category__item"><a class="category__link">最新</a></li>
+                   <li class="category__item"><a class="category__link">新闻</a></li>
+                   <li class="category__item"><a class="category__link">公告</a></li>
+                   <li class="category__item"><a class="category__link">教研</a></li>
+               </ul>
+               
+               <!-- news区块 -->
+               <ul class="news">
+                 <!-- 最新 -->
+                <ul class="news">
+                    <li class="news__item news__tag-2" >
+                        <a class="news__title news__content ellipsis">
+                            <img class="coverFit" src="img/刻晴.png">
+                            <div class="news__info">
+                                <h3 class="ellipsis" title="大事件！学生管理系统上线">大事件！学生管理系统上线</h3>
+                                <p class="news__summary"></p>
+                            </div>
+                        </a>
+                        <div class="news__meta">
+                            <div class="news__date">2022/6</div>
+                            <a class="news__category news__cate-2">新闻</a>
+                        </div>
+                    </li>
+                    <li class="news__item news__tag-2">
+                        <a class="news__title news__content ellipsis">
+                            <img class="coverFit" src="img/img4.jpg">
+                            <div class="news__info">
+                                <h3 class="ellipsis" title="震惊！教师管理系统上线">震惊！教师管理系统上线</h3>
+                                <p class="news__summary"></p>
+                            </div>
+                        </a>
+                        <div class="news__meta">
+                            <div class="news__date">2022/6</div>
+                            <a class="news__category news__cate-2">新闻</a>
+                        </div>
+                    </li>
+                    <li class="news__item news__tag-2">
+                        <a class="news__title news__content ellipsis">
+                            <img class="coverFit" src="img/img5.jpg">
+                            <div class="news__info">
+                                <h3 class="ellipsis" title="请给我的GitHub项目点个星！">请给我的GitHub项目点个星！</h3>
+                                <p class="news__summary"></p>
+                            </div>
+                        </a>
+                        <div class="news__meta">
+                            <div class="news__date">2022/6</div>
+                            <a class="news__category news__cate-2">新闻</a>
+                        </div>
+                    </li>
+                    <li class="news__item news__tag-2" >
+                        <a class="news__title news__content ellipsis">
+                            <img class="coverFit" src="img/img4.jpg">
+                            <div class="news__info">
+                                <h3 class="ellipsis" title="「学生选课系统」正式上线！">「学生选课系统」正式上线！</h3>
+                                <p class="news__summary"></p>
+                            </div>
+                        </a>
+                        <div class="news__meta">
+                            <div class="news__date">2022/6</div>
+                            <a class="news__category news__cate-2">新闻</a>
+                        </div>
+                    </li>
+                    <li class="news__item news__tag-2" >
+                        <a class="news__title news__content ellipsis">
+                            <img class="coverFit" src="img/img5.jpg">
+                            <div class="news__info">
+                                <h3 class="ellipsis" title="班级管理正式上线！">班级管理正式上线！</h3>
+                                <p class="news__summary"></p>
+                            </div>
+                        </a>
+                        <div class="news__meta">
+                            <div class="news__date">2022/6</div>
+                            <a class="news__category news__cate-2">新闻</a>
+                        </div>
+                    </li>
+                   </ul>
+                   <!-- 新闻 -->
+                   <ul class="news" style="display: none;">
+                    <li class="news__item news__tag-2" >
+                        <a class="news__title news__content ellipsis">
+                            <img class="coverFit" src="img/img4.jpg">
+                            <div class="news__info">
+                                <h3 class="ellipsis" title="请给我的GitHub项目点个星！">请给我的GitHub项目点个星！</h3>
+                                <p class="news__summary"></p>
+                            </div>
+                        </a>
+                        <div class="news__meta">
+                            <div class="news__date">2022/6</div>
+                            <a class="news__category news__cate-2">新闻</a>
+                        </div>
+                    </li>
+                    <li class="news__item news__tag-2">
+                        <a class="news__title news__content ellipsis">
+                            <img class="coverFit" src="img/img4.jpg">
+                            <div class="news__info">
+                                <h3 class="ellipsis" title="请给我的GitHub项目点个星！">请给我的GitHub项目点个星！</h3>
+                                <p class="news__summary"></p>
+                            </div>
+                        </a>
+                        <div class="news__meta">
+                            <div class="news__date">2022/6</div>
+                            <a class="news__category news__cate-2">新闻</a>
+                        </div>
+                    </li>
+                    <li class="news__item news__tag-2">
+                        <a class="news__title news__content ellipsis">
+                            <img class="coverFit" src="img/img4.jpg">
+                            <div class="news__info">
+                                <h3 class="ellipsis" title="请给我的GitHub项目点个星！">请给我的GitHub项目点个星！</h3>
+                                <p class="news__summary"></p>
+                            </div>
+                        </a>
+                        <div class="news__meta">
+                            <div class="news__date">2022/6</div>
+                            <a class="news__category news__cate-2">新闻</a>
+                        </div>
+                    </li>
+                    
+                   <!-- 公告 -->
+                   <ul class="news" style="display: none;">
+                    <li class="news__item news__tag-2" >
+                        <a class="news__title news__content ellipsis">
+                            <img class="coverFit" src="img/img4.jpg">
+                            <div class="news__info">
+                                <h3 class="ellipsis" title="请给我的GitHub项目点个星！">请给我的GitHub项目点个星！</h3>
+                                <p class="news__summary"></p>
+                            </div>
+                        </a>
+                        <div class="news__meta">
+                            <div class="news__date">2022/6</div>
+                            <a class="news__category news__cate-2">新闻</a>
+                        </div>
+                    </li>
+                    
+                    <!-- 活动 -->
+                    <ul class="news" style="display: none;">
+                        <li class="news__item news__tag-2">
+                            <a class="news__title news__content ellipsis">
+                                <img class="coverFit" src="img/img4.jpg">
+                                <div class="news__info">
+                                    <h3 class="ellipsis" title="敬请期待">敬请期待</h3>
+                                    <p class="news__summary"></p>
+                                </div>
+                            </a>
+                            <div class="news__meta">
+                                <div class="news__date">2022/6</div>
+                                <a class="news__category news__cate-2">新闻</a>
+                            </div>
+                        </li>
+                      
+                       </ul>
+                        
+                   </ul>
+               </ul>
+              <!-- 加载更多 -->
+              <li class="news__more">加载更多</li>
+              <div class="icp">
+                <span class="icp1">互联网ICP备案:豫ICP备2022013315号-1</span>
+              </div>
+            </div>
+        </div>
+       
+    </div>
+
+
+	
+		
+	
+            
+	
+</body>
+ <!-- Swiper JS -->
+ <script src="js/swiper-bundle.min.js"></script>
+<script src="js/header.js"></script>
+<script src="js/index.js"></script>
+<script src="js/move.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/tab_con.js"></script>
+<script src="js/movers.js"></script>
+<script src="js/news.js"></script>
+</html>

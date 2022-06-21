@@ -1,0 +1,240 @@
+{
+  "homeInfo": {
+    "title": "首页",
+    "href": "/welcome"
+  },
+  "logoInfo": {
+    "title": "综合管理系统",
+
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "常规管理",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "人员管理",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "学生列表",
+              "href": "emp",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "教师列表",
+              "href": "teh",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "敬请期待",
+              "href": "page/welcome-3.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "课程管理",
+          "href": "course",
+          "icon": "fa fa-window-maximize",
+          "target": "_self"
+        },
+
+        {
+          "title": "班级管理",
+          "href": "page/table.html",
+          "icon": "fa fa-file-text",
+          "target": "_self"
+        },
+        {
+          "title": "选课管理",
+          "href": "",
+          "icon": "fa fa-calendar",
+          "target": "_self",
+          "child": [
+            {
+              "title": "选课结果",
+              "href": "selection",
+              "icon": "fa fa-list-alt",
+              "target": "_self"
+            },
+            {
+              "title": "选课",
+              "href": "eselect",
+              "icon": "fa fa-navicon",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "敬请期待",
+          "href": "",
+          "icon": "fa fa-flag-o",
+          "target": "_self",
+          "child": [
+            {
+              "title": "敬请期待",
+              "href": "page/login-1.html",
+              "icon": "fa fa-stumbleupon-circle",
+              "target": "_blank"
+            },
+            {
+              "title": "敬请期待",
+              "href": "page/login-2.html",
+              "icon": "fa fa-viacoin",
+              "target": "_blank"
+            },
+            {
+              "title": "敬请期待",
+              "href": "page/login-3.html",
+              "icon": "fa fa-tags",
+              "target": "_blank"
+            }
+          ]
+        },
+        {
+          "title": "敬请期待",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "敬请期待",
+              "href": "page/404.html",
+              "icon": "fa fa-hourglass-end",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "敬请期待",
+          "href": "",
+          "icon": "fa fa-snowflake-o",
+          "target": "",
+          "child": [
+            {
+              "title": "敬请期待",
+              "href": "page/button.html",
+              "icon": "fa fa-snowflake-o",
+              "target": "_self"
+            },
+            {
+              "title": "敬请期待",
+              "href": "page/layer.html",
+              "icon": "fa fa-shield",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "敬请期待",
+      "icon": "fa fa-lemon-o",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "敬请期待",
+          "href": "page/icon.html",
+          "icon": "fa fa-dot-circle-o",
+          "target": "_self"
+        },
+        {
+          "title": "敬请期待",
+          "href": "page/icon-picker.html",
+          "icon": "fa fa-adn",
+          "target": "_self"
+        },
+        {
+          "title": "敬请期待",
+          "href": "page/color-select.html",
+          "icon": "fa fa-dashboard",
+          "target": "_self"
+        },
+        {
+          "title": "敬请期待",
+          "href": "page/table-select.html",
+          "icon": "fa fa-angle-double-down",
+          "target": "_self"
+        },
+        {
+          "title": "敬请期待",
+          "href": "page/upload.html",
+          "icon": "fa fa-arrow-up",
+          "target": "_self"
+        },
+        {
+          "title": "敬请期待",
+          "href": "page/editor.html",
+          "icon": "fa fa-edit",
+          "target": "_self"
+        },
+        {
+          "title": "敬请期待",
+          "href": "page/area.html",
+          "icon": "fa fa-rocket",
+          "target": "_self"
+        }
+      ]
+    },
+    {
+      "title": "敬请期待",
+      "icon": "fa fa-slideshare",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "敬请期待",
+          "href": "",
+          "icon": "fa fa-meetup",
+          "target": "",
+          "child": [
+            {
+              "title": "敬请期待",
+              "href": "page/button.html?v=1",
+              "icon": "fa fa-calendar",
+              "target": "_self",
+              "child": [
+                {
+                  "title": "敬请期待",
+                  "href": "page/button.html?v=2",
+                  "icon": "fa fa-snowflake-o",
+                  "target": "_self",
+                  "child": [
+                    {
+                      "title": "敬请期待",
+                      "href": "page/button.html?v=3",
+                      "icon": "fa fa-snowflake-o",
+                      "target": "_self"
+                    },
+                    {
+                      "title": "敬请期待",
+                      "href": "page/form.html?v=1",
+                      "icon": "fa fa-calendar",
+                      "target": "_self"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "敬请期待",
+          "href": "page/error.html",
+          "icon": "fa fa-superpowers",
+          "target": "_self"
+        }
+      ]
+    }
+  ]
+}

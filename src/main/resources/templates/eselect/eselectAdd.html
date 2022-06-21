@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/css/layuimini.css?v=2.0.4.2}" media="all">
+    <link rel="stylesheet" th:href="@{/css/themes/default.css}" media="all">
+    <link rel="stylesheet" th:href="@{/lib/font-awesome-4.7.0/css/font-awesome.min.css}" media="all">
+    <style>
+        body{
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form class="layui-form" action="" th:object="${course}">
+        <input type="hidden" name="grade" value="0">
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-inline">
+                <input type="text" name="empId"  placeholder="请输入姓名" autocomplete="off" class="layui-input" id='test'>
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">课程</label>
+            <div class="layui-input-block">
+                <select th:field="*{courseId}" lay-verify="required">
+                    <option value="">请选择</option>
+                    <option th:each="cou:${course}" th:value="${cou.courseId}">
+                        <span th:text="${cou.courseName}"></span>
+                    </option>
+                    //spring历遍
+                </select>
+            </div>
+        </div>
+
+<!--        <div class="layui-form-item">-->
+<!--            <label class="layui-form-label">姓名</label>-->
+<!--            <div class="layui-input-block">-->
+<!--                <select name="empId" lay-verify="required">-->
+<!--                    <option value="">请选择</option>-->
+<!--                    <option th:each="emp:${empList}" th:value="${emp.empId}">-->
+<!--                        <span th:text="${emp.name}"></span>-->
+<!--                    </option>-->
+<!--                    //spring历遍-->
+<!--                </select>-->
+<!--            </div>-->
+<!--        </div>-->
+
+
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button id="btn-submit" class="layui-btn" lay-submit lay-filter="btn-submit-filter">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+    <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" charset="utf-8"></script>
+    <script th:src="@{/layui/layui.js}" charset="utf-8"></script>
+    <script th:src="@{/js/lay-config.js?v=1.0.4}" charset="utf-8"></script>
+<!--    <script th:inline="javascript">-->
+<!--        var ctxPath = [[@{/}]];-->
+<!--        var tableSelect = layui.tableSelect;-->
+<!--        tableSelect.render({-->
+<!--            elem: 'test',	//定义输入框input对象 必填-->
+<!--            checkedKey: 'empId', //表格的唯一建值，非常重要，影响到选中状态 必填-->
+<!--            searchKey: 'empId',	//搜索输入框的name值 默认keyword-->
+<!--            searchPlaceholder: '关键词搜索',	//搜索输入框的提示文字 默认关键词搜索-->
+<!--            table: {	//定义表格参数，与LAYUI的TABLE模块一致，只是无需再定义表格elem-->
+<!--                url:ctxPath+'emp/list',	//表格数据请求url-->
+<!--                cols: [-->
+<!--                    [-->
+<!--                    {type: 'radio'},-->
+<!--                    {field: 'empId', title: 'ID'},-->
+<!--                    {field: 'name', title: '姓名'},-->
+<!--                    {field: 'sex', title: '性别'}-->
+<!--                ]-->
+<!--                ]-->
+<!--            },-->
+<!--            done: function (elem, data) {-->
+<!--                //选择完后的回调，包含2个返回值 elem:返回之前input对象；data:表格返回的选中的数据 []-->
+<!--                //拿到data[]后 就按照业务需求做想做的事情啦~比如加个隐藏域放ID...-->
+<!--            }-->
+<!--        })-->
+
+<!--            // layui.use(['table', 'form', 'tableSelect'], function () {-->
+<!--            //     var $ = layui.jquery,-->
+<!--            //         table = layui.table,-->
+<!--            //         form = layui.form,-->
+<!--            //         tableSelect = layui.tableSelect;-->
+<!--            //-->
+<!--            //     tableSelect.render({-->
+<!--            //         elem: 'test',-->
+<!--            //         checkedKey: 'empId',-->
+<!--            //         table: {-->
+<!--            //             url: ctxPath + 'emp/list',-->
+<!--            //             cols: [-->
+<!--            //                 [-->
+<!--            //                     {type: 'radio'},-->
+<!--            //                     {field: 'empId', title: 'ID'},-->
+<!--            //                     {field: 'name', title: '姓名'},-->
+<!--            //                     {field: 'sex', title: '性别'}-->
+<!--            //                 ]-->
+<!--            //             ]-->
+<!--            //         },-->
+<!--            //         done: function (elem, data) {-->
+<!--            //             var NEWJSON = []-->
+<!--            //             layui.each(data.data, function (index, item) {-->
+<!--            //                 NEWJSON.push(item.name)-->
+<!--            //             })-->
+<!--            //             elem.val(NEWJSON.join(","))-->
+<!--            //         }-->
+<!--            //     })-->
+<!--            // });-->
+<!--    </script>-->
+    <script th:inline="javascript">
+
+
+        var ctxPath = [[@{/}]];
+        layui.use(['laydate','table','form','tableSelect'], function() {
+            var laydate = layui.laydate;
+            var table = layui.table;
+            var form = layui.form;
+            var $ = layui.$;
+            var tableSelect = layui.tableSelect;
+
+            tableSelect.render({
+                elem: '#test',
+                checkedKey: 'empId',
+                searchType: 'more',
+                searchList: [
+                    {searchKey: 'name', searchPlaceholder: '搜索用户姓名'},
+                    {searchKey: 'sex', searchPlaceholder: '搜索用户性别'},
+                ],
+                table: {
+                    url: '/emp/list',
+                    cols: [
+                        [
+                        { type: 'radio' },
+                        { field: 'empId', title: 'ID' },
+                        { field: 'name', title: '姓名' },
+                        { field: 'sex', title: '性别' }
+                    ]
+                    ]
+                },
+                done: function (elem, data) {
+                    var NEWJSON = []
+                    layui.each(data.data, function (index, item) {
+                        NEWJSON.push(item.empId)
+                    })
+                    elem.val(NEWJSON.join(","))
+                }
+            });
+
+
+            laydate.render({
+                elem: '[name="birthday"]' //指定元素
+            });
+            //表单提交
+            form.on('submit(btn-submit-filter)', function(data) {
+                $("#btn-submit").attr("disabled", "disabled").addClass("layui-btn-disabled");
+                console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+                //提交到服务器,发送异步请求
+                var url = ctxPath + 'eselect';
+
+                $.post(url,data.field, function (response) {
+                    if(response.code==0){
+                        layer.msg(response.msg,{icon:6,time:2000}, function () {
+                            //刷新表格
+                            parent.layer.closeAll('iframe');
+                            parent.refreshTable();
+                            layer.closeAll();
+
+
+                        });
+                    }
+                else {
+                     layer.msg("失败", {icon: 2, anim:6});
+                                        }
+
+
+
+                });
+
+
+                //提交成功关闭并刷新父页面
+                //失败则弹出错误提示，页面不刷新
+                return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+            });
+
+        });
+
+    </script>
+</body>
+</html>

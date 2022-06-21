@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:mysql://101.35.5.23:3306/curd?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: curd
+    password: 85094072liu
+    driverClassName: com.mysql.cj.jdbc.Driver
+  thymeleaf:
+    cache: false
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+    throw-exception-if-no-handler-found: true
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: GMT+8
+mybatis:
+  mapper-locations: mapper/*.xml
+  type-aliases-package: com.example.layui.entity
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    com.example: DEBUG
+

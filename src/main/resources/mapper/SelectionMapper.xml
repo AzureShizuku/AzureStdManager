@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.layui.mapper.selectionMapper">
+    <resultMap id="selectionMap" type="Selection">
+        <id column="course_id" property="courseId"/>
+        <result column="emp_id" property="empId"/>
+        <result column="grade" property="grade"/>
+        <result column="iid" property="iid"/>
+        <association property="emp" column="emp_id" javaType="Emp">
+            <id column="emp_id" property="name"/>
+            <result column="name" property="name"/>
+        </association>
+        <association property="course" column="course_id" javaType="Course">
+            <id column="course_id" property="courseName"/>
+            <result column="course_name" property="courseName"/>
+        </association>
+    </resultMap>
+<!--   //查询所有员工列表-->
+    <select id="getSelectionList" parameterType="com.example.layui.vo.SelectionQuery" resultMap="selectionMap">
+        select * from selection a left join emp d on a.emp_id=d.emp_id left join course e on a.course_id=e.course_id
+        <include refid="getEmpListWhere"></include>
+        limit #{start},#{limit}
+    </select>
+<!--查数据量-->
+    <select id="countSelectionList" parameterType="com.example.layui.vo.SelectionQuery" resultType="Long">
+        select count(*) from selection a left join emp d on a.emp_id=d.emp_id left join course e on a.course_id=e.course_id
+    <include refid="getEmpListWhere"></include>
+    </select>
+    <sql id="getEmpListWhere">
+        <where>
+            <if test="name != null">
+                 name like '%' #{name} '%'
+            </if>
+
+        </where>
+    </sql>
+    <delete id="deleteSelectionByIds" parameterType="String">
+        delete from selection where iid in (${ids})
+    </delete>
+    <select id="getSelectionById" parameterType="Integer" resultType="Selection">
+        select * from selection where iid=#{iid}
+    </select>
+    <insert id="insertSelection" parameterType="Selection">
+        insert into selection(emp_id,course_id,grade) values(#{empId},#{courseId},#{grade})
+    </insert>
+    <update id="updateSelection" parameterType="Selection">
+        update selection set emp_id=#{empId},course_id=#{courseId},grade=#{grade} where iid=#{iid}
+    </update>
+    <insert id="addSelection" parameterType="Selection" >
+        insert into selection(emp_id,course_id,grade) values(#{empId},#{courseId},#{grade})
+    </insert>
+
+</mapper>

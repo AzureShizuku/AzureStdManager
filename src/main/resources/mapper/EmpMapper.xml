@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.layui.mapper.EmpMapper">
+    <resultMap id="empMap" type="Emp">
+        <id column="emp_id" property="empId"/>
+        <result column="name" property="name"/>
+        <result column="sex" property="sex"/>
+        <result column="sal" property="sal"/>
+        <result column="age" property="age"/>
+        <result column="birthday" property="birthday"/>
+        <result column="address" property="address"/>
+        <result column="dept_id" property="deptId"/>
+        <association property="dept" column="dept_id" javaType="Dept">
+            <id column="dept_id" property="deptName"/>
+            <result column="dept_name" property="deptName"/>
+        </association>
+    </resultMap>
+<!--   //查询所有员工列表-->
+    <select id="getEmpList" parameterType="com.example.layui.vo.EmpQuery" resultMap="empMap">
+        select * from emp a left join dept d on a.dept_id=d.dept_id
+        <include refid="getEmpListWhere"></include>
+        limit #{start},#{limit}
+    </select>
+<!--查数据量-->
+    <select id="countEmpList" parameterType="com.example.layui.vo.EmpQuery" resultType="Long">
+        select count(*) from emp
+    <include refid="getEmpListWhere"></include>
+    </select>
+    <sql id="getEmpListWhere">
+        <where>
+            <if test="name != null">
+                 name like '%' #{name} '%'
+            </if>
+            <if test="startDate != null">
+                <![CDATA[and birthday>=#{startDate}]]>
+            </if>
+            <if test="endDate!=null">
+                <![CDATA[and birthday<=#{endDate}]]>
+
+            </if>
+        </where>
+    </sql>
+    <insert id="addEmp" parameterType="Emp" >
+            insert into emp
+            (name,age,sex,sal,birthday,address,dept_id)
+            values(#{name},#{age},#{sex},#{sal},#{birthday},#{address},#{deptId})
+    </insert>
+    <delete id="deleteEmpByIds" parameterType="String">
+        delete from emp where emp_id in (${ids})
+    </delete>
+    <select id="getEmpById" parameterType="Integer" resultType="Emp">
+        select * from emp where emp_id=#{empId}
+    </select>
+    <update id="updateEmp" parameterType="Emp">
+        update emp set name=#{name},sex=#{sex},sal=#{sal},age=#{age},birthday=#{birthday},address=#{address},dept_id=#{deptId} where emp_id=#{empId}
+    </update>
+    <select id="getAllEmp" resultType="Emp" >
+        select * from emp
+    </select>
+
+</mapper>

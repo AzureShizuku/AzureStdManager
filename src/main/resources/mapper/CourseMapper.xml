@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.layui.mapper.CourseMapper">
+    <resultMap id="courseMap" type="Course">
+        <id column="course_id" property="courseId"/>
+        <result column="course_name" property="courseName"/>
+        <result column="credit" property="credit"/>
+        <result column="hours" property="hours"/>
+        <result column="location" property="location"/>
+        <result column="capacity" property="capacity"/>
+        <result column="teacher_id" property="teacherId"/>
+        <association property="teacher" column="teacher_id" javaType="Teacher">
+            <id column="teacher_id" property="teacherName"/>
+            <result column="teacher_name" property="teacherName"/>
+        </association>
+    </resultMap>
+<!--   //查询所有员工列表-->
+    <select id="getCourseList" parameterType="com.example.layui.vo.CourseQuery" resultMap="courseMap">
+        select * from course a left join teacher d on a.teacher_id=d.teacher_id
+        <include refid="getEmpListWhere"></include>
+        limit #{start},#{limit}
+    </select>
+<!--查数据量-->
+    <select id="countCourseList" parameterType="com.example.layui.vo.CourseQuery" resultType="Long">
+        select count(*) from course
+    <include refid="getEmpListWhere"></include>
+    </select>
+    <sql id="getEmpListWhere">
+        <where>
+            <if test="courseName != null">
+                 course_name like '%' #{courseName} '%'
+            </if>
+
+        </where>
+    </sql>
+    <insert id="addCourse" parameterType="Course" >
+        insert into course(course_name,credit,hours,location,capacity,teacher_id) values(#{courseName},#{credit},#{hours},#{location},#{capacity},#{teacherId})
+
+    </insert>
+    <delete id="deleteCourseByIds" parameterType="String">
+        delete from course where course_id in (${ids})
+    </delete>
+    <select id="getCourseById" parameterType="Integer" resultType="Course">
+        select * from course where course_id=#{courseId}
+    </select>
+    <update id="updateCourse" parameterType="Course">
+        update course set course_name=#{courseName},credit=#{credit},hours=#{hours},location=#{location},capacity=#{capacity},teacher_id=#{teacherId} where course_id=#{courseId}
+    </update>
+    <select id="getAllCourse" resultType="Course" >
+        select * from course
+    </select>
+</mapper>

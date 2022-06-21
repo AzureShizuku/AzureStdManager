@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/css/layuimini.css?v=2.0.4.2}" media="all">
+    <link rel="stylesheet" th:href="@{/css/themes/default.css}" media="all">
+    <link rel="stylesheet" th:href="@{/lib/font-awesome-4.7.0/css/font-awesome.min.css}" media="all">
+    <style>
+        body{
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">课程名</label>
+            <div class="layui-input-block">
+                <input type="text" name="courseName" required  lay-verify="required" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">学分</label>
+            <div class="layui-input-block">
+                <input type="text" name="credit" required  lay-verify="required|number" placeholder="请输入年龄" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">学时</label>
+            <div class="layui-input-block">
+                <input type="text" name="hours" required  lay-verify="required|number" placeholder="请输入电话" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">客容量</label>
+            <div class="layui-input-block">
+                <input type="text" name="capacity" required  lay-verify="required|number" placeholder="请输入电话" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">任课老师</label>
+            <div class="layui-input-block">
+                <select name="teacherId" lay-verify="required">
+                    <option value="">请选择</option>
+                    <option th:each="teh:${teacherList}" th:value="${teh.teacherId}">
+                        <span th:text="${teh.teacherName}"></span>
+                    </option>
+                    //spring历遍
+                </select>
+            </div>
+        </div>
+
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">地址</label>
+            <div class="layui-input-block">
+                <textarea name="location" placeholder="请输入地址" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button id="btn-submit" class="layui-btn" lay-submit lay-filter="btn-submit-filter">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+    <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" charset="utf-8"></script>
+    <script th:src="@{/layui/layui.js}" charset="utf-8"></script>
+    <script th:inline="javascript">
+
+        var ctxPath = [[@{/}]];
+        layui.use(['laydate','table','form'], function() {
+            var laydate = layui.laydate;
+            var table = layui.table;
+            var form = layui.form;
+            var $ = layui.$;
+            laydate.render({
+                elem: '[name="birthday"]' //指定元素
+            });
+            //表单提交
+            form.on('submit(btn-submit-filter)', function(data) {
+                $("#btn-submit").attr("disabled", "disabled").addClass("layui-btn-disabled");
+                console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+                //提交到服务器,发送异步请求
+                var url = ctxPath + 'course';
+                $.post(url,data.field, function (response) {
+                    if(response.code==0){
+                        layer.msg(response.msg,{icon:6,time:2000}, function () {
+                            //刷新表格
+                            parent.layer.closeAll('iframe');
+                            parent.refreshTable2();
+                            window.parent.refreshTable2();
+                            layer.closeAll();
+                            window.parent.refreshTable2()
+
+                        });
+                    }
+                else {
+                     layer.msg("失败", {icon: 2, anim:6});
+                                        }
+
+
+
+                });
+
+
+                //提交成功关闭并刷新父页面
+                //失败则弹出错误提示，页面不刷新
+                return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+            });
+
+        });
+
+    </script>
+</body>
+</html>
